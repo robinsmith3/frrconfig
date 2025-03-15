@@ -15,6 +15,7 @@ exit
 !
 interface lo
  ip address 10.1.1.2/32
+ ip router isis 1
 exit
 !
 router bgp 65000
