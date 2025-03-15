@@ -3,8 +3,6 @@ frr defaults traditional
 hostname frr-2
 no ipv6 forwarding
 !
-debug bgp keepalives
-!
 interface eth1
  ip address 10.1.2.1/24
  ip isis router 1
