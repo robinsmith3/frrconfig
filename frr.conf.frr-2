@@ -7,26 +7,26 @@ debug bgp keepalives
 !
 interface eth1
  ip address 10.1.2.1/24
+ ip isis router 1
 exit
 !
 interface eth3
  ip address 10.2.3.3/24
+ ip isis router 1
 exit
 !
 interface lo
- ip address 1.1.1.2/32
- ip router isis 1
- isis passive
+ ip address 10.1.1.2/32
 exit
 !
-router bgp 65002
- bgp router-id 1.1.1.2
+router bgp 65000
+ bgp router-id 10.1.1.2
  no bgp ebgp-requires-policy
- neighbor 10.1.2.2 remote-as 65001
- neighbor 10.2.3.2 remote-as 65003
+ neighbor 10.1.2.2 remote-as 65000
+ neighbor 10.2.3.2 remote-as 65000
  !
  address-family ipv4 unicast
-  network 1.1.1.2/32
+  network 10.1.1.2/32
  exit-address-family
 exit
 !
