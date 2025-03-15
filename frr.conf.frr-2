@@ -10,7 +10,7 @@ exit
 !
 interface eth3
  ip address 10.2.3.3/24
- ip isis router 1
+ ip router isis 1
 exit
 !
 interface lo
