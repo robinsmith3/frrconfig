@@ -22,6 +22,5 @@
 ``2a00:23c6:9c79:3201:10:1:1:n/64`` 
 - likewise where ``10:1:1:1`` is the loopback for say node 1
 - the right most 1 completing the prefix
-- and by implication the node id
 - ``10:1:1`` is never going to appear as a network prefix 
 - because node 1 cannot connect to node 1 across a p2p link
