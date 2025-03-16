@@ -1,6 +1,7 @@
 # To add IPv6 networks and hosts to the system
 ## Gateway v6 address
-```2a00:23c6:9c79:3201:42:21ff:fee9:6b00/64```
+```2a00:23c6:9c79:3201:42:21ff:fee9:6b00/64``` \
+
 What size network /64 \
 The issue here being the prefix is not a static allocation by the ISP
 
