@@ -12,7 +12,7 @@
 ## v6 Networks
 ``2a00:23c6:9c79:3201:10:1:2:1/64`` 
 - where `10` id's the whole network prefix
-- where ``10:1:2:n`` is the point to point network link
+- where ``10:1:2:n`` is the point to point network prefix
 - with lower order node on the left
 - and the right most n is the node id
 
