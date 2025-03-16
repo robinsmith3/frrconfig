@@ -1,6 +1,6 @@
 # To add IPv6 networks and hosts to the system
 ## Gateway v6 address
-'2a00:23c6:9c79:3201:42:21ff:fee9:6b00/64'
+```'2a00:23c6:9c79:3201:42:21ff:fee9:6b00/64'```
 The issue here being the prefix is not a static allocation by the ISP
 ## Should we use a public IPv6 space?
 Where a public IP is used for v6 and private for v4. Am open to guidance on this - my rational is a home network NATs v4 but not v6, so why here either. v6 can handle it
