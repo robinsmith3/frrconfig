@@ -4,6 +4,7 @@
 
 - Network prefix size /64
 - A supplemental issue here being how to handle a non static allocation by the ISP
+- on a dymanic re-allocation could use SED to adjust all coonfigs and reload nodes
 
 ## Should we use a public IPv6 space?
 - Where a public IP space is used for v6 and private for v4 \
