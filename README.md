@@ -11,15 +11,17 @@
 - Am open to guidance on this - my rational is a home network NATs v4 but not v6, so why here either? v6 can handle it
 
 ## v6 Networks
-``2a00:23c6:9c79:3201:10:1:2:1/64`` 
+``2a00:23c6:9c79:3201:10:1:2:n/64`` 
 - where `10` id's the whole network prefix
 - where ``10:1:2:n`` is the point to point network prefix
-- with lower order node on the left
-- and the right most n is the node id
+- with lower order node signified by the `1`
+- and the higher order node by the 2
+- always in that order
 
 ## v6 Hosts (loopbacks)
-``2a00:23c6:9c79:3201:10:1:1:1/64`` 
+``2a00:23c6:9c79:3201:10:1:1:n/64`` 
 - likewise where ``10:1:1:1`` is the loopback for say node 1
-- the right most 1 completing the node id
+- the right most 1 completing the prefix
+- and by implication the node id
 - ``10:1:1`` is never going to appear as a network prefix 
 - because node 1 cannot connect to node 1 across a p2p link
