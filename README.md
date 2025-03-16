@@ -2,8 +2,8 @@
 ## Gateway v6 address
 ```2a00:23c6:9c79:3201:42:21ff:fee9:6b00/64``` 
 
-What size network /64 \
-The issue here being the prefix is not a static allocation by the ISP
+- [x]What size network /64
+- The issue here being the prefix is not a static allocation by the ISP
 
 ## Should we use a public IPv6 space?
 Where a public IP is used for v6 and private for v4 \
@@ -17,7 +17,7 @@ Am open to guidance on this - my rational is a home network NATs v4 but not v6, 
 - [ ]and the left most 1 (or 2) is interface IP
 
 v6 Hosts (loopbacks)
-```2a00:23c6:9c79:3201:10:1:1:1/64``` 
+``2a00:23c6:9c79:3201:10:1:1:1/64`` 
 - [ ]likewise where 10:1:1:1 is the loopback for node 1
 - [x]the right most 1 being the node id
 - [x]and 1:1 is never going to appear as a network prefix 
