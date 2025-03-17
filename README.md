@@ -14,13 +14,10 @@
 - Where a public IP space is used for v6 and private for v4 \
 - Am open to guidance on this - my rational is a home network NATs v4 but not v6, so why here either? v6 can handle it
 
-## v6 Networks
-``2a00:23c6:9c79:3201:FDE8:1:2:0/120`` \
-``2a00:23c6:9c79:3201:AS:LON:HON:n/120`` 
-- where `AS` the autonomous system in hex
-- where ``LON`` is the lower order node of a p2p link
-- where ``HON`` is the higher order node of a p2p link
+## v6 p2p Networks
+``2a00:23c6:9c79:3201::1:2:2/120`` \
+``2a00:23c6:9c79:3201::lower-order-node:higher-order-node:to-node:/116`` 
 
 ## v6 Hosts (loopbacks)
-``2a00:23c6:9c79:3201:FDE8:1:2:1/128`` 
+``2a00:23c6:9c79:3201::1/128`` 
 - likewise where the above host address is the loopback for say node 1
