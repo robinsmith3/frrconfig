@@ -1,9 +1,13 @@
-# To add IPv6 networks and hosts to the system
+# To migrate the network to IPv6 networks and hosts
 ## Gateway v6 address
 ```2a00:23c6:9c79:3201:42:21ff:fee9:6b00/64``` 
-
-- Network prefix size /64
 - A supplemental issue here being how to handle a non static allocation by the ISP
+
+## Network Prefix
+``2a00:23c6:9c79:3201::::/64``
+
+## All numbering in hex
+- Network prefix size /120
 - on a dymanic re-allocation could use SED to adjust all configs and reload nodes
 
 ## Should we use a public IPv6 space?
@@ -11,16 +15,12 @@
 - Am open to guidance on this - my rational is a home network NATs v4 but not v6, so why here either? v6 can handle it
 
 ## v6 Networks
-``2a00:23c6:9c79:3201:10:1:2:n/64`` 
-- where `10` id's the whole network prefix
-- where ``10:1:2:n`` is the point to point network prefix
-- with lower order node signified by the `1`
-- and the higher order node by the 2
-- always in that order
+``2a00:23c6:9c79:3201:FDE8:1:2:0/120`` 
+``2a00:23c6:9c79:3201:AS:LON:HON:n/120`` 
+- where `AS` the autonomous system in hex
+- where ``LON`` is the lower order nodes network prefix
+- where ``HON`` is the higher order nodes network prefix
 
 ## v6 Hosts (loopbacks)
-``2a00:23c6:9c79:3201:10:1:1:n/64`` 
-- likewise where ``10:1:1:1`` is the loopback for say node 1
-- the right most 1 completing the prefix
-- ``10:1:1`` is never going to appear as a network prefix 
-- because node 1 cannot connect to node 1 across a p2p link
+``2a00:23c6:9c79:3201:FDE8:1:2:1/128`` 
+- likewise where the above host address is the loopback for say node 1
