@@ -18,8 +18,8 @@
 ``2a00:23c6:9c79:3201:FDE8:1:2:0/120`` \
 ``2a00:23c6:9c79:3201:AS:LON:HON:n/120`` 
 - where `AS` the autonomous system in hex
-- where ``LON`` is the lower order nodes network prefix
-- where ``HON`` is the higher order nodes network prefix
+- where ``LON`` is the lower order node of a p2p link
+- where ``HON`` is the higher order node of a p2p link
 
 ## v6 Hosts (loopbacks)
 ``2a00:23c6:9c79:3201:FDE8:1:2:1/128`` 
