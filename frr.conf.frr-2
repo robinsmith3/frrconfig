@@ -18,7 +18,7 @@ interface lo
 exit
 !
 router bgp 65000
- bgp router-id 10.1.1.2
+ bgp router-id 10.0.0.2
  neighbor ipv6 address 2a00:23c6:9c79:3201::1:2:2 remote-as 65000
  neighbor ipv6 address 2a00:23c6:9c79:3201::2:3:2 remote-as 65000
 !
