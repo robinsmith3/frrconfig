@@ -1,4 +1,4 @@
-frr version 8.4_git
+ frr version 8.4_git
 frr defaults traditional
 hostname frr-2
 !
@@ -21,7 +21,7 @@ router bgp 65000
  bgp router-id 10.0.0.2
  neighbor ipv6 address 2a00:23c6:9c79:3201::1:2:2 remote-as 65000
  neighbor ipv6 address 2a00:23c6:9c79:3201::2:3:2 remote-as 65000
-!
+ !
  address-family ipv6 unicast
   network 2a00:23c6:9c79:3201::2/128
  exit-address-family
