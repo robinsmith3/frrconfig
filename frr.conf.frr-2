@@ -4,12 +4,10 @@ hostname frr-2
 !
 interface eth1
  ipv6 address 2a00:23c6:9c79:3201:0:1:2:1/120
- ipv6 router isis 1
-exit
+ exit
 !
 interface eth3
  ipv6 address 2a00:23c6:9c79:3201:0:2:3:3/120
- ipv6 router isis 1
 exit
 !
 interface lo
@@ -18,6 +16,7 @@ exit
 !
 router bgp 65002
  bgp router-id 10.0.0.2
+ no bgp ebgp-requires-policy
  neighbor 2a00:23c6:9c79:3201:0:1:2:2 remote-as 65001
  neighbor 2a00:23c6:9c79:3201:0:2:3:2 remote-as 65003
  !
