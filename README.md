@@ -1,5 +1,5 @@
 
-# Automate restarts fo GNS3 networks
+# Automate restarts for GNS3 networks
 
 - container_names.sh - converts funny names to GNS3 hostnames
 - copy_containers.sh - copies necessary files to bring up nodes (still needs daemons file in included files to copy)
