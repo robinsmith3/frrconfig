@@ -1,3 +1,4 @@
+!
 frr version 8.4_git
 frr defaults traditional
 hostname frr-1
@@ -31,4 +32,5 @@ router isis 1
  is-type level-1
  net 49.0001.0000.0000.0001.00
 exit
+!
 !
