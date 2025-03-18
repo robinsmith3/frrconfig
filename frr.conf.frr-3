@@ -1,3 +1,4 @@
+!
 frr version 8.4_git
 frr defaults traditional
 hostname frr-3

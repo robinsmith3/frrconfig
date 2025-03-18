@@ -5,7 +5,7 @@ hostname frr-2
 !
 interface eth1
  ipv6 address 2a00:23c6:9c79:3201:0:1:2:1/120
- exit
+exit
 !
 interface eth3
  ipv6 address 2a00:23c6:9c79:3201:0:2:3:3/120
