@@ -4,3 +4,4 @@
 still needs daemons file in included files to copy
 - config-file-check.sh - checks loaded configs and reloads from scratch \
 still need to test out config-file-check-new which integrats do-reload and test-reload
+- download_frr.sh - TBD download to store of initial or pre-running frr node
