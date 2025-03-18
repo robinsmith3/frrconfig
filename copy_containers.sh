@@ -16,7 +16,7 @@ if [ ${#FILE_ARRAY[@]} -eq 0 ]; then
 fi
 
 # Additional files to copy
-EXTRA_FILES=("reload.sh" "reload-test.sh")
+EXTRA_FILES=("reload.sh" "reload-test.sh" "daemons")
 
 # Process each file
 for file in "${FILE_ARRAY[@]}"; do
