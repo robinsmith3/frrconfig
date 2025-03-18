@@ -1,2 +1,3 @@
-docker exec $1 ./reload-test.sh frr.conf.$1
+#!/bin/bash
+docker exec $1 /usr/lib/frr/frr-reload.py --test frr.conf.$1
 
