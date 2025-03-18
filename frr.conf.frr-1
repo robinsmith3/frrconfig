@@ -2,10 +2,6 @@ frr version 8.4_git
 frr defaults traditional
 hostname frr-1
 !
-interface eth1
- shutdown
-exit
-!
 interface eth2
  ipv6 address 2a00:23c6:9c79:3201:0:1:2:2/120
  ipv6 router isis 1
