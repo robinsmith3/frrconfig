@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# check all frr config files and ask user if they want to update
 # Get all files beginning with 'frr' in current directory
 files=(frr*)
 
