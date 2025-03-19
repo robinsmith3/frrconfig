@@ -5,10 +5,12 @@ hostname frr-5
 !
 interface eth0
  ipv6 address 2a00:23c6:9c79:3201:0:3:5:3/120
+ ipv6 router isis 1
 exit
 !
 interface eth1
  ipv6 address 2a00:23c6:9c79:3201:0:4:5:4/120
+ ipv6 router isis 1
 exit
 !
 interface eth2
