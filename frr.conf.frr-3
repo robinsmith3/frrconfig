@@ -41,11 +41,11 @@ router bgp 65003
   neighbor 2a00:23c6:9c79:3201:0:2:3:3 route-map PREPEND_AS in
   neighbor 2a00:23c6:9c79:3201:0:2:3:3 route-map PREPEND_AS out
   neighbor 2a00:23c6:9c79:3201:0:3:4:3 activate
-  neighbor 2a00:23c6:9c79:3201:0:3:4:3 route-map PREPEND_AS in
-  neighbor 2a00:23c6:9c79:3201:0:3:4:3 route-map PREPEND_AS out
+ ! neighbor 2a00:23c6:9c79:3201:0:3:4:3 route-map PREPEND_AS in
+ ! neighbor 2a00:23c6:9c79:3201:0:3:4:3 route-map PREPEND_AS out
   neighbor 2a00:23c6:9c79:3201:0:3:5:3 activate
-  neighbor 2a00:23c6:9c79:3201:0:3:5:3 route-map PREPEND_AS in
-  neighbor 2a00:23c6:9c79:3201:0:3:5:3 route-map PREPEND_AS out
+ ! neighbor 2a00:23c6:9c79:3201:0:3:5:3 route-map PREPEND_AS in
+ ! neighbor 2a00:23c6:9c79:3201:0:3:5:3 route-map PREPEND_AS out
  exit-address-family
 exit
 !
