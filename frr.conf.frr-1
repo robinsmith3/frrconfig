@@ -17,14 +17,17 @@ exit
 !
 router bgp 65001
  bgp router-id 10.0.0.1
- no bgp ebgp-requires-policy
  neighbor 2a00:23c6:9c79:3201:0:1:2:1 remote-as 65002
  neighbor 2a00:23c6:9c79:3201:0:1:3:1 remote-as 65003
  !
  address-family ipv6 unicast
   network 2a00:23c6:9c79:3201::1/128
   neighbor 2a00:23c6:9c79:3201:0:1:2:1 activate
+  neighbor 2a00:23c6:9c79:3201:0:1:2:1 route-map PREPEND_AS in
+  neighbor 2a00:23c6:9c79:3201:0:1:2:1 route-map PREPEND_AS in
   neighbor 2a00:23c6:9c79:3201:0:1:3:1 activate
+  neighbor 2a00:23c6:9c79:3201:0:1:2:1 route-map PREPEND_AS in
+  neighbor 2a00:23c6:9c79:3201:0:1:2:1 route-map PREPEND_AS in
  exit-address-family
 exit
 !
@@ -33,4 +36,5 @@ router isis 1
  net 49.0001.0000.0000.0001.00
 exit
 !
+route-map PREPEND_AS permit 10
 !
