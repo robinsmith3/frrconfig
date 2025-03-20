@@ -23,6 +23,7 @@ process_file() {
     local file="$1"
     local old_pattern="2a00:23c6:9c79:3201:"
     local new_pattern="2001:db8::"
+    local new_pattern_single="2001:db8:"
     local filename=$(basename "$file")
     
     # Create backup
@@ -39,12 +40,20 @@ process_file() {
         # Perform replacement and log each change
         while IFS= read -r line; do
             if [[ "$line" =~ $old_pattern ]]; then
-                log_change "$file" "$old_pattern" "$new_pattern"
+                # Check if the full pattern in the line ends with ::
+                if [[ "$line" =~ ${old_pattern}.*::$ ]]; then
+                    log_change "$file" "$old_pattern" "$new_pattern_single"
+                else
+                    log_change "$file" "$old_pattern" "$new_pattern"
+                fi
             fi
         done < "$file"
         
-        # Perform replacement in temp file
-        sed "s|$old_pattern|$new_pattern|g" "$file" > "$temp_file"
+        # Perform replacements based on whether the original ends with ::
+        # First handle cases ending with :: using single :
+        sed "s|${old_pattern}\(.*\)::$|${new_pattern_single}\1|g" "$file" > "$temp_file"
+        # Then handle all other cases with double ::
+        sed -i "s|${old_pattern}|${new_pattern}|g" "$temp_file"
         
         # Move temp file to changes directory
         mv "$temp_file" "$CHANGES_DIR/$filename"
