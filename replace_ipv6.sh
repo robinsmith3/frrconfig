@@ -1,11 +1,13 @@
 #!/bin/bash
 
-# Backup directory and log file
+# Directories and log file
 BACKUP_DIR="backups_$(date +%Y%m%d_%H%M%S)"
+CHANGES_DIR="changed_$(date +%Y%m%d_%H%M%S)"
 LOGFILE="replace_log_$(date +%Y%m%d_%H%M%S).txt"
 
-# Create backup directory
+# Create directories
 mkdir -p "$BACKUP_DIR"
+mkdir -p "$CHANGES_DIR"
 
 # Function to display and log changes
 log_change() {
@@ -21,14 +23,19 @@ process_file() {
     local file="$1"
     local old_pattern="2a00:23c6:9c79:3201:"
     local new_pattern="2001:db8::"
+    local filename=$(basename "$file")
     
     # Create backup
-    local backup_file="$BACKUP_DIR/$(basename "$file")"
+    local backup_file="$BACKUP_DIR/$filename"
     cp "$file" "$backup_file"
     echo "Created backup: $backup_file"
     
     # Check if file contains the pattern
     if grep -q "$old_pattern" "$file"; then
+        # Create temporary file for changes
+        local temp_file="$CHANGES_DIR/$filename.tmp"
+        cp "$file" "$temp_file"
+        
         # Perform replacement and log each change
         while IFS= read -r line; do
             if [[ "$line" =~ $old_pattern ]]; then
@@ -36,11 +43,17 @@ process_file() {
             fi
         done < "$file"
         
-        # Actually perform the replacement
-        sed -i "s|$old_pattern|$new_pattern|g" "$file"
-        echo "Processed: $file"
+        # Perform replacement in temp file
+        sed "s|$old_pattern|$new_pattern|g" "$file" > "$temp_file"
+        
+        # Move temp file to changes directory
+        mv "$temp_file" "$CHANGES_DIR/$filename"
+        echo "Processed file saved: $CHANGES_DIR/$filename"
     else
         echo "No matches found in: $file"
+        # Copy unchanged file to changes dir anyway
+        cp "$file" "$CHANGES_DIR/$filename"
+        echo "Copied unchanged to: $CHANGES_DIR/$filename"
     fi
 }
 
@@ -96,3 +109,4 @@ esac
 
 echo -e "\nChanges have been logged to $LOGFILE"
 echo "Backups stored in: $BACKUP_DIR"
+echo "Processed files stored in: $CHANGES_DIR"
