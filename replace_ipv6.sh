@@ -1,13 +1,16 @@
 #!/bin/bash
 
-# Directories and log file
-BACKUP_DIR="backups_$(date +%Y%m%d_%H%M%S)"
-CHANGES_DIR="changed_$(date +%Y%m%d_%H%M%S)"
+# Base directories for all changes and backups
+BASE_CHANGES_DIR="changed_files"
+BASE_BACKUP_DIR="backup_files"
+# Specific run directories with timestamp
+RUN_CHANGES_DIR="$BASE_CHANGES_DIR/changed_$(date +%Y%m%d_%H%M%S)"
+RUN_BACKUP_DIR="$BASE_BACKUP_DIR/backups_$(date +%Y%m%d_%H%M%S)"
 LOGFILE="replace_log_$(date +%Y%m%d_%H%M%S).txt"
 
 # Create directories
-mkdir -p "$BACKUP_DIR"
-mkdir -p "$CHANGES_DIR"
+mkdir -p "$RUN_BACKUP_DIR"
+mkdir -p "$RUN_CHANGES_DIR"
 
 # Function to display and log changes
 log_change() {
@@ -27,14 +30,14 @@ process_file() {
     local filename=$(basename "$file")
     
     # Create backup
-    local backup_file="$BACKUP_DIR/$filename"
+    local backup_file="$RUN_BACKUP_DIR/$filename"
     cp "$file" "$backup_file"
     echo "Created backup: $backup_file"
     
     # Check if file contains the pattern
     if grep -q "$old_pattern" "$file"; then
         # Create temporary file for changes
-        local temp_file="$CHANGES_DIR/$filename.tmp"
+        local temp_file="$RUN_CHANGES_DIR/$filename.tmp"
         cp "$file" "$temp_file"
         
         # Perform replacement and log each change
@@ -56,13 +59,13 @@ process_file() {
         sed -i "s|${old_pattern}|${new_pattern}|g" "$temp_file"
         
         # Move temp file to changes directory
-        mv "$temp_file" "$CHANGES_DIR/$filename"
-        echo "Processed file saved: $CHANGES_DIR/$filename"
+        mv "$temp_file" "$RUN_CHANGES_DIR/$filename"
+        echo "Processed file saved: $RUN_CHANGES_DIR/$filename"
     else
         echo "No matches found in: $file"
         # Copy unchanged file to changes dir anyway
-        cp "$file" "$CHANGES_DIR/$filename"
-        echo "Copied unchanged to: $CHANGES_DIR/$filename"
+        cp "$file" "$RUN_CHANGES_DIR/$filename"
+        echo "Copied unchanged to: $RUN_CHANGES_DIR/$filename"
     fi
 }
 
@@ -117,5 +120,5 @@ case $choice in
 esac
 
 echo -e "\nChanges have been logged to $LOGFILE"
-echo "Backups stored in: $BACKUP_DIR"
-echo "Processed files stored in: $CHANGES_DIR"
+echo "Backups stored in: $RUN_BACKUP_DIR"
+echo "Processed files stored in: $RUN_CHANGES_DIR"
