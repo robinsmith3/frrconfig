@@ -1,43 +1,38 @@
-!
 frr version 8.4_git
 frr defaults traditional
 hostname frr-4
+no ipv6 forwarding
 !
 interface eth0
- ipv6 address 2a00:23c6:9c79:3201:0:3:4:3/120
- ipv6 router isis 1 
+ ipv6 address 2001:db8::3:4:4/120
+ ipv6 router isis 1
 exit
 !
 interface eth1
- ipv6 address 2a00:23c6:9c79:3201:0:4:5:5/120
+ ipv6 address 2001:db8::4:5:4/120
  ipv6 router isis 1
 exit
 !
 interface eth2
- ipv6 address 2a00:23c6:9c79:3201:0:4:6:6/120
+ ipv6 address 2001:db8::4:6:4/120
 exit
 !
 interface lo
- ipv6 address 2a00:23c6:9c79:3201::4/128
+ ipv6 address 2001:db8::4/128
 exit
 !
 router bgp 65003
  bgp router-id 10.0.0.4
- neighbor 2a00:23c6:9c79:3201:0:3:4:4 remote-as 65003
- neighbor 2a00:23c6:9c79:3201:0:4:5:4 remote-as 65003
- neighbor 2a00:23c6:9c79:3201:0:4:6:4 remote-as 65004
+ no bgp ebgp-requires-policy
+ neighbor 2001:db8::3:4:3 remote-as 65003
+ neighbor 2001:db8::4:5:5 remote-as 65003
+ neighbor 2001:db8::4:6:6 remote-as 65004
  !
  address-family ipv6 unicast
-  network 2a00:23c6:9c79:3201::4/128
-  neighbor 2a00:23c6:9c79:3201:0:3:4:4 activate
- ! neighbor 2a00:23c6:9c79:3201:0:3:4:4 route-map PREPEND_AS in
- ! neighbor 2a00:23c6:9c79:3201:0:3:4:4 route-map PREPEND_AS out
-  neighbor 2a00:23c6:9c79:3201:0:4:5:4 activate
- ! neighbor 2a00:23c6:9c79:3201:0:4:5:4 route-map PREPEND_AS in
- ! neighbor 2a00:23c6:9c79:3201:0:4:5:4 route-map PREPEND_AS out
-  neighbor 2a00:23c6:9c79:3201:0:4:6:4 activate
-  neighbor 2a00:23c6:9c79:3201:0:4:6:4 route-map PREPEND_AS in
-  neighbor 2a00:23c6:9c79:3201:0:4:6:4 route-map PREPEND_AS out
+  network 2001:db8::4/128
+  neighbor 2001:db8::3:4:3 activate
+  neighbor 2001:db8::4:5:5 activate
+  neighbor 2001:db8::4:6:6 activate
  exit-address-family
 exit
 !
@@ -45,6 +40,4 @@ router isis 1
  is-type level-1
  net 49.0001.0000.0000.0004.00
 exit
-!
-route-map PREPEND_AS permit 10
 !
