@@ -4,11 +4,11 @@ frr defaults traditional
 hostname frr-2
 !
 interface eth1
- ipv6 address 2001:db8::1:2:2/120
+ ipv6 address 2001:db8::1:2:2/112
 exit
 !
 interface eth3
- ipv6 address 2001:db8::2:3:2/120
+ ipv6 address 2001:db8::2:3:2/112
 exit
 !
 interface lo
