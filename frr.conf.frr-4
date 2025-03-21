@@ -1,7 +1,7 @@
+!
 frr version 8.4_git
 frr defaults traditional
 hostname frr-4
-no ipv6 forwarding
 !
 interface eth0
  ipv6 address 2001:db8::3:4:4/120
@@ -24,6 +24,8 @@ exit
 router bgp 65003
  bgp router-id 10.0.0.4
  no bgp ebgp-requires-policy
+ bgp default ipv6-unicast
+ no bgp default ipv4-unicast
  neighbor 2001:db8::3:4:3 remote-as 65003
  neighbor 2001:db8::4:5:5 remote-as 65003
  neighbor 2001:db8::4:6:6 remote-as 65004
@@ -41,3 +43,4 @@ router isis 1
  net 49.0001.0000.0000.0004.00
 exit
 !
+end
