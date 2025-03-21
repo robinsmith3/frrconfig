@@ -32,9 +32,9 @@ router bgp 65003
  !
  address-family ipv6 unicast
   network 2001:db8::5/128
-  neighbor 2001:db8::3:5:3 activate
-  neighbor 2001:db8::4:5:4 activate
-  neighbor 2001:db8::5:8:8 activate
+!  neighbor 2001:db8::3:5:3 activate
+!  neighbor 2001:db8::4:5:4 activate
+!  neighbor 2001:db8::5:8:8 activate
  exit-address-family
 exit
 !
