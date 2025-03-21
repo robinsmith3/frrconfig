@@ -19,6 +19,7 @@ exit
 !
 interface lo
  ipv6 address 2001:db8::4/128
+ ipv6 router isis 1
 exit
 !
 router bgp 65003
