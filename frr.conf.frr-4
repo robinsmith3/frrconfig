@@ -28,11 +28,8 @@ router bgp 65003
  bgp default ipv6-unicast
  no bgp default ipv4-unicast
  neighbor 2001:db8::3:4:3 remote-as 65003
- neighbor 2001:db8::3:4:3 update-source lo
  neighbor 2001:db8::4:5:5 remote-as 65003
- neighbor 2001:db8::3:4:3 update-source lo 
  neighbor 2001:db8::4:6:6 remote-as 65004
- neighbor 2001:db8::3:4:3 update-source lo 
 !
  address-family ipv6 unicast
   network 2001:db8::4/128
